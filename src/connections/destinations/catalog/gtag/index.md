@@ -6,7 +6,7 @@ strat: google
 ---
 
 > note ""
-> The Gtag Destination is in a closed Early Access Preview. To join the preview, contact [Segment Support](https://segment.com/help/contact/) or your CSM. The use is governed by [(1) Segment First Access](/docs/legal/first-access-beta-preview/) and Beta Terms and Conditions and [(2) Segment Acceptable Use Policy](/docs/legal/acceptable-use-policy/).
+> The Gtag Destination is in a closed Early Access Preview. To join the preview, contact [Segment Support](https://segment.com/help/contact/) or your CSM. The use is governed by [(1) Segment First Access](https://segment.com/legal/first-access-beta-preview/){:target="_blank"} and Beta Terms and Conditions and [(2) Segment Acceptable Use Policy](https://segment.com/legal/acceptable-use-policy/){:target='_blank'}.
 
 
 ## Getting started
@@ -41,7 +41,7 @@ In some cases, like using Google Analytics to track search queries, you might wa
 
 ## UTM parameters
 
-Segment recommends Analytics.js, the device-mode Javascript library, for collecting UTM parameter data because Analytics.js collects this data automatically.
+Segment recommends Analytics.js, the device-mode JavaScript library, for collecting UTM parameter data because Analytics.js collects this data automatically.
 
 Pass UTM parameters in the `context` object in `context.campaign`. For Google Analytics, send  `campaign.name`, `campaign.source` and `campaign.medium` all together to ensure the appear in reports. The other two parameters (`campaign.term` and `campaign.content`) are both optional, but is forwarded to Google Analytics if you send them to Segment.
 
@@ -400,7 +400,7 @@ Segment supports the following Google Analytics features:
 - [Optimize](#optimize)
 
 ### Client-Side library methods
-Because Segment's client-side snippet wraps the `gtag.js` Javascript SDK, all gtag.js library methods that don't map to Segment methods are available client side. Although invoking a native library method won't send data to Segment or other Segment-enabled destinations, the method *will* send data to Google.
+Because Segment's client-side snippet wraps the `gtag.js` JavaScript SDK, all gtag.js library methods that don't map to Segment methods are available client side. Although invoking a native library method won't send data to Segment or other Segment-enabled destinations, the method *will* send data to Google.
 
 To access gtag.js methods while using Segment, write these methods inside an `analytics.ready()` function, for example:
 
@@ -438,7 +438,7 @@ analytics.ready(function(){
 
 To do this server side, you can create a separate [source](/docs/connections/sources/) in Segment, and within this source enter your Google Analytics credentials for the second tracker.
 
-This source can be your server-side source. From there, you send data to multiple projects server-side. As you can see in this [Node example](/docs/sources/server/node/#multiple-clients) you can initialize multiple instances of the library.
+This source can be your server-side source. From there, you send data to multiple projects server-side. As you can see in this [Node example](/docs/connections/sources/catalog/libraries/server/node/#multiple-clients) you can initialize multiple instances of the library.
 
 ### Cookie domain name
 

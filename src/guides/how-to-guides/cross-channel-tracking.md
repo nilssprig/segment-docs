@@ -154,7 +154,7 @@ Tracking with JavaScript in the browser has its benefits, such as leveraging bro
 
 [Learn more about client vs server tracking.](https://segment.com/academy/collecting-data/when-to-track-on-the-client-vs-server/)
 
-If you do move key checkout events to the server side, you will have to manually send the data automatically collected by our client-side javascript library to your server. These pieces of tracking data are still important for the following reasons:
+If you do move key checkout events to the server side, you will have to manually send the data automatically collected by our client-side JavaScript library to your server. These pieces of tracking data are still important for the following reasons:
 
 *   **UTM parameters**: collecting the UTM params will allow you to tie conversion events to your marketing campaign or activities. This is valuable in that you can immediately measure performance and calculate ROI on your campaigns.
 
@@ -194,7 +194,6 @@ Most other advertising networks provide some functionality of manually uploading
 
 *   [Google Adwords](https://adwords.google.com/home/) provides the functionality to [attribute offline conversions to your ads](https://support.google.com/adwords/answer/2998031?hl=en).
 
-*   [Optimizely](https://www.optimizely.com/) allows [importing offline data to match conversions](https://help.optimizely.com/Measure_success%3A_Track_visitor_behaviors/Tracking_offline_conversion_events_with_Optimizely_Classic)to their experiments
 
 
 Being able to attribute in-store purchases to an impression from a display ad online is critical to help marketers and advertisers understand which campaigns or creatives are driving sales. The more real-time the data and insights, the more nimble your business can be in altering course so that additional resources can be put towards the right marketing actions.

@@ -1,8 +1,8 @@
 ---
 title: Analytics for Python
+id: XRksQPCr7X
 ---
-
-Our Python library lets you record analytics data from your Python code. The requests hit our servers, and then we route your data to any analytics service you enable on your destinations page.
+Segment's Python library lets you record analytics data from your Python code. The requests hit Segment's servers, and then we route your data to any analytics service you enable on your destinations page.
 
 This library is open-source, so you can [check it out on GitHub](https://github.com/segmentio/analytics-python).
 
@@ -12,10 +12,10 @@ Want to stay updated on releases? Subscribe to the [release feed](https://github
 
 ## Getting Started
 
-Install `analytics-python` using pip:
+Install `segment-analytics-python` using pip:
 
 ```
-pip install analytics-python
+pip install segment-analytics-python
 ```
 
 If you're using a system for managing dependencies, you'll want to pin the library to `1.X` to avoid breaking changes when the library is updated
@@ -45,7 +45,18 @@ analytics.debug = True
 analytics.on_error = on_error
 ```
 
+If you don't want to send information to Segment during testing, add the following code to your test:
+
+```python
+analytics.send = False
+```
+
 **Using Django?** Check out the [Django docs](/docs/connections/sources/catalog/libraries/server/python/#django).
+
+### Regional configuration
+For Business plans with access to [Regional Segment](/docs/guides/regional-segment), you can use the `host` configuration parameter to send data to the desired region:
+1. Oregon (Default) — `api.segment.io/v1`
+2. Dublin — `events.eu1.segmentapis.com/v1/`
 
 ## Identify
 
@@ -510,6 +521,9 @@ By default, our library will flush:
 
 There is a maximum of `500KB` per batch request and `32KB` per call.
 
+{% include content/tracking-api-limit.md %}
+
+
 ### What happens if there are just too many messages?
 
 If the module detects that it can't flush faster than it's receiving messages, it'll simply stop accepting messages. This means your program will never crash because of a backed up analytics queue. The default `max_queue_size` is `10000`.
@@ -678,7 +692,8 @@ If you're having issues with threads outliving your request, check [Background t
 
 ### Request Size Limits
 
-Keep in mind that we have a size limit of `32KB` per request and `500KB` per batch request!
+{% include content/tracking-api-limit.md %}
+
 
 {% include content/troubleshooting-intro.md %}
 {% include content/troubleshooting-server-debugger.md %}
@@ -710,13 +725,13 @@ Does it match [the most current version](https://github.com/segmentio/analytics-
 If not, update your version.
 
 ```
-pip install -U analytics-python
+pip install -U segment-analytics-python
 ```
 
 or
 
 ```
-easy_install --upgrade analytics-python
+easy_install --upgrade segment-analytics-python
 ```
 
 ### Background threads and synchronous mode

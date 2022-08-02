@@ -20,5 +20,5 @@
 		"prefix": ["- name"],
 		"body":["- name: ${1:name}\r\tdescription: ${2:description}\r\tdefault: ${3}"],
 		"description": "Yaml settings"
-	}
+	},
 }

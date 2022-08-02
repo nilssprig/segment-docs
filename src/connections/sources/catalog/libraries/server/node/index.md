@@ -14,8 +14,6 @@ Want to stay updated on releases? Subscribe to the [release feed](https://github
 
 ## Getting Started
 
-### Install the Module
-
 Run:
 
 ```bash
@@ -33,6 +31,10 @@ Of course, you'll want to replace `YOUR_WRITE_KEY` with your actual **Write Key*
 
 This will create an instance of `Analytics` that you can use to send data to Segment for your project. The default initialization settings are production-ready and queue 20 messages before sending any requests. In development you might want to use [development settings](/docs/connections/sources/catalog/libraries/server/node/#development).
 
+### Regional configuration
+For Business plans with access to [Regional Segment](/docs/guides/regional-segment), you can use the `host` configuration parameter to send data to the desired region:
+1. Oregon (Default) — `api.segment.io/v1`
+2. Dublin — `events.eu1.segmentapis.com/v1/`
 ## Identify
 
 > note ""
@@ -87,7 +89,7 @@ The `identify` call has the following fields:
   </tr>
   <tr>
     <td>`timestamp` _Date, optional_</td>
-    <td>A Javascript date object representing when the identify took place. If the identify just happened, leave it out and we'll use the server's time. If you're importing data from the past make sure you to send a `timestamp`.</td>
+    <td>A JavaScript date object representing when the identify took place. If the identify just happened, leave it out and we'll use the server's time. If you're importing data from the past make sure you to send a `timestamp`.</td>
   </tr>
   <tr>
     <td>`context` _Object, optional_</td>
@@ -156,7 +158,7 @@ The `track` call has the following fields:
   </tr>
   <tr>
     <td>`timestamp` _Date, optional_</td>
-    <td>A Javascript date object representing when the track took place. If the track just happened, leave it out and we'll use the server's time. If you're importing data from the past make sure you to send a `timestamp`.</td>
+    <td>A JavaScript date object representing when the track took place. If the track just happened, leave it out and we'll use the server's time. If you're importing data from the past make sure you to send a `timestamp`.</td>
   </tr>
   <tr>
     <td>`context` _Object, optional_</td>
@@ -213,7 +215,7 @@ The `page` call has the following fields:
   </tr>
   <tr>
     <td>`timestamp` _Date, optional_</td>
-    <td>A Javascript date object representing when the track took place. If the track just happened, leave it out and we'll use the server's time. If you're importing data from the past make sure you to send a `timestamp`.</td>
+    <td>A JavaScript date object representing when the track took place. If the track just happened, leave it out and we'll use the server's time. If you're importing data from the past make sure you to send a `timestamp`.</td>
   </tr>
   <tr>
     <td>`context` _Object, optional_</td>
@@ -347,9 +349,33 @@ var analytics = new Analytics('YOUR_WRITE_KEY', {
   <tr>
     <td>`enable` _Boolean_</td>
     <td>Enable (default) or disable flush. Useful when writing tests and you do not want to send data to Segment Servers.</td>
-  </tr>  
+  </tr>
 </table>
 
+### Error Handling
+
+Additionally there is an optional `errorHandler` property available to the class constructor's options.
+If unspecified, the behaviour of the library does not change.
+If specified, when an axios request fails, `errorHandler(axiosError)` will be called instead of re-throwing the axios error.
+
+Example usage:
+```javascript
+const Analytics = require('analytics-node');
+
+const client = new Analytics('write key', {
+  errorHandler: (err) => {
+    console.error('analytics-node flush failed.')
+    console.error(err)
+  }
+});
+
+client.track({
+  event: 'event name',
+  userId: 'user id'
+});
+
+```
+If this fails when flushed no exception will be thrown, instead the axios error will be logged to the console.
 
 ## Development
 
@@ -435,6 +461,84 @@ You can also flush on demand. For example, at the end of your program, you need 
 analytics.flush(function(err, batch){
   console.log('Flushed, and now this program can exit!');
 });
+```
+
+## Long running process
+
+You should call `client.track(...)` and know that events will be queued and eventually sent to Segment. To prevent losing messages, be sure to capture any interruption (for example, a server restart) and call flush to know of and delay the process shutdown.
+
+```js
+import { randomUUID } from 'crypto';
+import Analytics from 'analytics-node'
+
+const WRITE_KEY = '...';
+
+const analytics = new Analytics(WRITE_KEY, { flushAt: 10 });
+
+analytics.track({
+  anonymousId: randomUUID(),
+  event: 'Test event',
+  properties: {
+    name: 'Test event',
+    timestamp: new Date()
+  }
+});
+
+const exitGracefully = async (code) => {
+  console.log('Flushing events');
+  await analytics.flush(function(err, batch) {
+    console.log('Flushed, and now this program can exit!');
+    process.exit(code);
+  });
+};
+
+[
+  'beforeExit', 'uncaughtException', 'unhandledRejection',
+  'SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP',
+  'SIGABRT','SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV',
+  'SIGUSR2', 'SIGTERM',
+].forEach(evt => process.on(evt, exitGracefully));
+
+function logEvery2Seconds(i) {
+    setTimeout(() => {
+        console.log('Infinite Loop Test n:', i);
+        logEvery2Seconds(++i);
+    }, 2000);
+}
+
+logEvery2Seconds(0);
+```
+
+## Short lived process
+
+Short-lived functions have a predictably short and linear lifecycle, so use a queue big enough to hold all messages and then await flush to complete its work.
+
+
+```js
+import { randomUUID } from 'crypto';
+import Analytics from 'analytics-node'
+
+
+async function lambda()
+{
+  const WRITE_KEY = '...';
+  const analytics = new Analytics(WRITE_KEY, { flushAt: 20 });
+  analytics.flushed = true;
+
+  analytics.track({
+    anonymousId: randomUUID(),
+    event: 'Test event',
+    properties: {
+      name: 'Test event',
+      timestamp: new Date()
+    }
+  });
+  await analytics.flush(function(err, batch) {
+    console.log('Flushed, and now this program can exit!');
+  });
+}
+
+lambda();
 ```
 
 

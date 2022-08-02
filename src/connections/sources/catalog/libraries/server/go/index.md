@@ -3,9 +3,8 @@ title: Analytics for Go
 sourceTitle: 'Go'
 sourceCategory: 'Server'
 repo: analytics-go
+id: yBvi77aEwr
 ---
-
-
 Our Go library lets you record analytics data from your Go code. The requests hit our servers, and then we route your data to any analytics service you enable on your destinations page.
 
 This library is open-source, so you can [check it out on GitHub](https://github.com/segmentio/analytics-go).
@@ -14,7 +13,6 @@ All of Segment's server-side libraries are built for high-performance, so you ca
 
 ## Getting Started
 
-### Install the Package
 
 Install `analytics-go` using `go get`:
 
@@ -40,6 +38,11 @@ func main() {
 That will create a `client` that you can use to send data to Segment for your source.
 
 The default initialization settings are production-ready and queue 20 messages before sending a batch request, and a 5 second interval.
+
+### Regional configuration
+For Business plans with access to [Regional Segment](/docs/guides/regional-segment), you can use the `host` configuration parameter to send data to the desired region:
+1. Oregon (Default) — `api.segment.io/v1`
+2. Dublin — `events.eu1.segmentapis.com/v1/`
 
 ## Identify
 
@@ -377,6 +380,8 @@ By default, our library will flush:
 + if 5 seconds has passed since the last flush (control with `FlushAfter`)
 
 There is a maximum of `500KB` per batch request and `32KB` per call.
+
+{% include content/tracking-api-limit.md %}
 
 Sometimes you might not want batching (eg. when debugging, or in short-lived programs). You can turn off batching by setting the `FlushAt` argument to `1`, and your requests will always be sent right away.
 

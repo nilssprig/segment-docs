@@ -3,15 +3,6 @@ title: Formatting guide
 description: The styleguide of front-end components
 hidden: true
 layout: page
-contributors:
-  - name: Paul Mccall
-    date: 23.08.2019
-  - name: Jane Doe
-    date: 23.08.2019
-  - name: Porter Braun
-    date: 23.08.2019
-  - name: Monica Buck
-    date: 23.08.2019
 related:
   - "/connections/sources/catalog/"
   - "/connections/sources/"
@@ -207,7 +198,7 @@ Add `{: .columns}` before a list you want to divide into two columns.
 
 ## Code Blocks
 
-Analytics.js, our Javascript `library`, is the most powerful way to track customer data from your `website`. If you're just starting out, we recommend it over server-side libraries as the simplest installation for any website.
+Analytics.js, our JavaScript `library`, is the most powerful way to track customer data from your `website`. If you're just starting out, we recommend it over server-side libraries as the simplest installation for any website.
 
 ```js
 analytics.identify('user_123', {
