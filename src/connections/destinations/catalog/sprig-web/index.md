@@ -33,7 +33,7 @@ Sprig Actions provides the following benefits over the classic Sprig destination
 
 1. In the Segment web app, click **Catalog**, then click **Destinations**.
 2. Type Sprig in the **Filter Destinations** field.
-3. Click **Sprig, then click **Configure Sprig**.
+3. Click **Sprig**, then click **Configure Sprig**.
 4. Select an existing JavaScript website source to connect to Sprig and click **Next**.
 5. Type in a **Destination name**, Select **Actions**, and click **Save**.
 6. Type in the Environment ID and click Save Chagges. You your Environment ID can be found here: [Connect > JavaScript](https://app.sprig.com/connect){:target="_blank"}.
