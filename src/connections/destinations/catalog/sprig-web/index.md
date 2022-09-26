@@ -46,6 +46,6 @@ Sprig Actions provides the following benefits over the classic Sprig destination
 
 ## Migration from the classic Sprig destination
 
-To prevent duplicate events being created in Sprig, ensure that for each Segment source, this destination and the Sprig Cloud destination are not both enabled at the same time.
+To prevent duplicate events being created in Sprig, ensure that this destination and a Sprig Cloud destinations are not both enabled for the same Source at the same time.
 
 
