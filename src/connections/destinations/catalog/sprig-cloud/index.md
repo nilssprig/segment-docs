@@ -15,7 +15,7 @@ Sprig maintains this destination. For any issues with the destination, consult [
 
 Segment has placed the Classic destination framework in maintenance mode. Sprig encourages all customers to move to the [Sprig Actions](https://segment.com/docs/connections/destinations/catalog/sprig-web/) destination framework when convenient. 
 
-## Getting Started
+## Getting Started with Classic
 
 {% include content/connection-modes.md %}
 
