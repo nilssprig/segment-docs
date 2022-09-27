@@ -13,7 +13,7 @@ versions:
 
 Sprig maintains this destination. For any issues with the destination, consult [Sprig's documentation](https://docs.sprig.com/docs/segment) or contact [support@sprig.com](mailto:support@sprig.com).
 
-Segment has placed the Classic destination framework in maintenance mode. Sprig encourages all customers to move to the Actions destination framework when convenient. 
+Segment has placed the Classic destination framework in maintenance mode. Sprig encourages all customers to move to the [Actions](https://segment.com/docs/connections/destinations/catalog/sprig-web/) destination framework when convenient. 
 
 ## Getting Started
 
