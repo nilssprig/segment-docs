@@ -36,8 +36,8 @@ Sprig Actions provides the following benefits over the classic Sprig destination
 3. Click **Sprig**, then click **Configure Sprig**.
 4. Select an existing JavaScript website source to connect to Sprig and click **Next**.
 5. Type in a **Destination name**, Select **Actions**, and click **Save**.
-6. Type in the Environment ID and click Save Chagges. You your Environment ID can be found here: [Connect > JavaScript](https://app.sprig.com/connect){:target="_blank"}.
-7. Select **Enable Destinations** and click **Save Chanages**.
+6. Type in the Environment ID and click Save Changes. You your Environment ID can be found here: [Connect > JavaScript](https://app.sprig.com/connect){:target="_blank"}. For for inofrmation on your Environment ID, click [here](https://docs.sprig.com/docs/products-and-environments#environments).
+7. Select **Enable Destinations** and click **Save Changes**.
 
 <!-- The line below renders a table of connection settings (if applicable), Pre-built Mappings, and available actions. -->
 
