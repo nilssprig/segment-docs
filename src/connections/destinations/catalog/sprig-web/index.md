@@ -22,10 +22,11 @@ Sprig maintains this destination. For any issues with the destination, consult [
 
 ## Benefits of Sprig Actions vs Sprig Classic
 
-Sprig Actions provides the following benefits over the classic Sprig destination:
+Sprig Actions provides the following benefits over the Sprig Classic destination:
 
 - **Trigger microsurveys**. As Sprig Actions hook into your browser-based, JavaScript Segment source, it can be used to trigger Sprig studies.
 - **Code-free Sprig installation**. You can intall Sprig Actions on your website, without you having to update any code.
+- Segment has placed the Classic destination framework in maintenance mode. Sprig encourages all customers to move to the Actions destination framework when convenient.
 
 <!-- The section below explains how to enable and configure the destination. Include any configuration steps not captured below. For example, obtaining an API key from your platform and any configuration steps required to connect to the destination. -->
 
