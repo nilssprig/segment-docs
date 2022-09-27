@@ -46,6 +46,6 @@ Sprig Actions provides the following benefits over the Sprig Classic destination
 
 ## Migration from Sprig Classic
 
-Segment has placed the Classic destination framework in maintenance mode. Sprig encourages all customers to move to the Actions destination framework when convenient.. To prevent duplicate events being generated in Sprig, ensure that this destination and a Sprig Cloud destination are not both enabled for the same Source.
+Segment has placed the Classic destination framework in maintenance mode. Sprig encourages all customers to move to the Actions destination framework when convenient. To prevent duplicate events being generated in Sprig, ensure that this destination and a Sprig Cloud destination are not both enabled for the same Source.
 
 
