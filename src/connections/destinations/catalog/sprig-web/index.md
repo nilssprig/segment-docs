@@ -20,7 +20,7 @@ versions:
 Sprig maintains this destination. For any issues with the destination, consult [Sprig's documentation](https://docs.sprig.com/docs/segment) or contact [support@sprig.com](mailto:support@sprig.com).
 
 
-## Benefits of Sprig Actions vs Sprig Classic
+## Benefits of Sprig Actions versus Sprig Classic
 
 Sprig Actions provides the following benefits over the Sprig Classic destination:
 
